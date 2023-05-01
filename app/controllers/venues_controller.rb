@@ -1,6 +1,5 @@
 class VenuesController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
   
     def index
         render json: Venue.all, status: :ok
@@ -8,7 +7,12 @@ class VenuesController < ApplicationController
 
     def show
         venue = Venue.find_by(id: params[:id])
-        render json: venue
+        render json: venue, status: :ok
+    end
+
+    def reviews
+        reviews = Venue.find_by(id: params[:id]).reviews
+        render json: reviews, status: :ok
     end
 
     def create
@@ -36,10 +40,6 @@ class VenuesController < ApplicationController
 
     def render_not_found_response
         render json: {errors: ["Venue was not found."]}, status: not_found 
-    end
-    
-    def render_unprocessable_entity_response(invalid)
-        render json: { errors: invali.record.errors }, status: :unprocessable_entity
     end
 
 end

@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.error-message {
+  color: red;
+}
+
+button {
+  background-color: #282c34;
+  color: white;
+  font-weight: bold;
+}

@@ -6,7 +6,7 @@ class Venue < ApplicationRecord
     validates :price, presence:true, numericality: { greater_than: 0, message: "must be greater than 0" }
 
     belongs_to :user
-    has_many :reviews
+    has_many :reviews, dependent: :destroy
     has_many :users, through: :reviews
 
 end

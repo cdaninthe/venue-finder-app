@@ -1,15 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function NavBar(){
+function NavBar({user}){
 
     return (
         <div>
-            <p>Hello USER</p>
-            <NavLink exact to="/venues">Venues |</NavLink>
-            <NavLink exact to="/account">  My Account  </NavLink>
-            <p>LOG OUT</p>
-
+            <h3>Hello {user.username}</h3>
+            <NavLink exact to="/">Venues |</NavLink>
+            <NavLink exact to="/account">  My Account  |</NavLink>
+            <NavLink exact to="/logout">  Log Out  </NavLink>
         </div>
     );
 }

@@ -41,7 +41,7 @@ Venue.all.each do |venue|
         venue.reviews.create(
             rating: rand(1..5),
             comment: Faker::Lorem.paragraph(sentence_count: 3),
-            user_id: User.all.sample.id
+            user_id: rand(1..3)
         )
     end
 end
