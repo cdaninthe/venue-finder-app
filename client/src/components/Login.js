@@ -12,7 +12,6 @@ function Login({onLogin}){
         setShowLogin(!showLogin)
     }
 
-
     return(
         <div>
              <Card fluid>
@@ -24,8 +23,7 @@ function Login({onLogin}){
                     </Card.Description>
                 </Card.Content>   
             </Card>
-        </div>
-     
+        </div>  
     );
 }
 

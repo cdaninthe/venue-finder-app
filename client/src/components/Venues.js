@@ -4,13 +4,11 @@ import Venue from "./Venue";
 
 function Venues({user}){
     const [venues, setVenues] = useState([])
-    console.log(user)
 
     useEffect(()=>{
         fetch(`/venues`)
         .then((r)=> r.json())
         .then((venues)=> {
-            console.log(venues)
             setVenues(venues)
         })
     },[])

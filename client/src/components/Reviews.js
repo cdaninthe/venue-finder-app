@@ -6,9 +6,7 @@ import ReviewForm from "./ReviewForm";
 
 function Reviews({user}){
     const params = useParams()
-    const [reviews, setReviews] = useState([])
-    console.log(user)
-    
+    const [reviews, setReviews] = useState([])    
 
     useEffect(() => {
         fetch(`/venues/${params.id}/reviews`)
@@ -68,7 +66,6 @@ function Reviews({user}){
     return(
         <div>
             <Card.Group itemsPerRow={1}>
-                {/* <h5 className="reviews-header"> Here's what others are saying... </h5> */}
                 <ReviewForm 
                     venueId={params.id}
                     onAddReview={handleAddReview}

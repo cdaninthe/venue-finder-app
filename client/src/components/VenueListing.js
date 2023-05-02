@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import Reviews from "./Reviews";
-import { Card, Icon } from "semantic-ui-react";
+import { Card } from "semantic-ui-react";
 
 
 function VenueListing({user}){
     const [venueListing, setVenueListing] = useState([])
     const params = useParams()
-    console.log(user)
     
     useEffect(() => {
         fetch(`/venues/${params.id}`)
@@ -23,7 +22,6 @@ function VenueListing({user}){
                 {venueListing.name} 
                 <h3>
                     {venueListing.city}, {venueListing.state}<br />
-                    {/* <Icon name='user' /> {venueListing.user.username} */}
                 </h3>
             </h2>
             <img src={venueListing.image_url} alt="venue"/>
@@ -33,8 +31,6 @@ function VenueListing({user}){
                 <h3>Reviews:</h3>
                 <Reviews user={user}/>
             </Card.Content>
-            
-
         </Card>
     );
 }

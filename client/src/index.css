@@ -14,6 +14,7 @@ code {
 
 .error-message {
   color: red;
+  background-color: rgb(212, 209, 209);
 }
 
 button {

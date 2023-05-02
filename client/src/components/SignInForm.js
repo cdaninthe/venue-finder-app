@@ -41,7 +41,7 @@ function SignInForm({handleLoginClick, onLogin}) {
                 {
                     error ? 
                     <div>
-                        <span className="error-message">{error}</span>
+                        <div className="error-message">{error}</div>
                     </div> 
                     : null 
                 }

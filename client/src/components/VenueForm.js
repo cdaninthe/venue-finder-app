@@ -21,7 +21,14 @@ function VenueForm({addNewVenue, setVenueFormHidden}){
       }).then((r) => {
         if(r.ok){
           addNewVenue(formData)
-          setFormData({name: "",city: "", state: "", description: "",price: "",image_url: ""})
+          setFormData({
+            name: "",
+            city: "", 
+            state: "", 
+            description: "",
+            price: "",
+            image_url: ""
+        })
         } else{
           r.json().then((err) => setErrors(err.errors));
         }

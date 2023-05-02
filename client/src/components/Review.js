@@ -1,22 +1,15 @@
 import React, {useState} from "react";
-import { Card, Image, Icon } from "semantic-ui-react";
-import {useHistory} from 'react-router-dom';
+import { Card, Icon } from "semantic-ui-react";
 
 function Review({review, onDeleteReview, onUpdateReview, user}){
     const [commentHidden, setCommentHidden] = useState('')
     const [formHidden, setFormHidden] = useState('hidden')
     const [reviewRating, setReviewRating] = useState('')
     const [reviewComment, setReviewComment] = useState('')
-    const [ editable, setEditable ] = useState(false)
-    const history = useHistory()
-    console.log(user, user.id)
 
     function handleEditClick(){
-        console.log('edit this review', review.id)
         setCommentHidden('hidden')
         setFormHidden('')
-        console.log(review.rating)
-        console.log(review.comment)
         setReviewRating(review.rating)
         setReviewComment(review.comment)
     }
@@ -34,7 +27,7 @@ function Review({review, onDeleteReview, onUpdateReview, user}){
             <Card.Content hidden={commentHidden}>
                 <Card.Content>
                     <Icon name='user' />
-                    {review.user.username} === DELETE THIS: User ID: {review.user.id}
+                    {review.user.username}
                 </Card.Content>
                 <Card.Meta>
                     RATING: {review.rating}/5
@@ -42,13 +35,10 @@ function Review({review, onDeleteReview, onUpdateReview, user}){
                 <Card.Description>
                     {review.comment}
                 </Card.Description>
-                
             </Card.Content>
             <div>
-                {/* {user.id === review.user.id ? */}
                 {user.id === review.user.id ?
                     <div>
-                        
                         <Icon name='edit outline' onClick={handleEditClick}/>
                         <Icon name='trash alternate outline' onClick={() => onDeleteReview(review.id)}/>
                         

@@ -3,19 +3,15 @@ import UserVenues from "./UserVenues";
 import VenueForm from "./VenueForm";
 import UserReviews from "./UserReviews";
 
-function Account({user}){
+function Account({}){
     const [userReviews, setUserReviews] = useState([]);
     const [userVenues, setUserVenues] = useState([]);
     const [venueFormHidden, setVenueFormHidden] = useState('hidden')
-
-    console.log(user)
 
     useEffect(() => {
     fetch("/me").then((r) => {
         if (r.ok) {
             r.json().then((user) => {
-                console.log(user.venues)
-                console.log(user.reviews)
                 setUserVenues(user.venues)
                 setUserReviews(user.reviews)
             });

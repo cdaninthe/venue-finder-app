@@ -52,15 +52,15 @@ function SignUpForm({handleLoginClick, onLogin}) {
                     onChange={(e) => setPasswordConfirmation(e.target.value)}
                 />
                 <br /><br />
-                {/* {
+                {
                     errors ? 
                         <div>
                             {errors.map((err) => (
-                                <span className="error-message" key={err}>{err}</span>
+                                <div className="error-message" key={err}>{err}</div>
                             ))}
                         </div> 
                     : null 
-                }                 */}
+                }                
                 <br />
                 <button>SIGN UP</button>
                 <br /><br />
