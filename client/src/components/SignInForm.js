@@ -24,7 +24,7 @@ function SignInForm({handleLoginClick, onLogin}) {
     return (
         <div>
             <form onSubmit={handleSignIn}>
-                <h2>Welcome Back! (USER LOGIN)</h2>
+                <h2>Welcome Back!</h2>
                 <br />
                 <label>Username: </label><br />
                 <input type="text" name="username" 

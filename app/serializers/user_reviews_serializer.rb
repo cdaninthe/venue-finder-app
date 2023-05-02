@@ -1,5 +1,5 @@
 class UserReviewsSerializer < ActiveModel::Serializer
-  attributes :id, :title, :comment, :space_id, :space
+  attributes :id, :rating, :comment, :venue_id, :venue
 
-  belongs_to :space
+  belongs_to :venue
 end

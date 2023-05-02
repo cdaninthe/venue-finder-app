@@ -16,8 +16,8 @@ class VenuesController < ApplicationController
     end
 
     def create
-        review = @current_user.reviews.create!(review_params)
-        render json: review, status: :created
+        venue = @current_user.venues.create!(venue_params)
+        render json: venue, status: :created
     end
 
     def update
@@ -28,7 +28,7 @@ class VenuesController < ApplicationController
 
     def destroy
         venue = Venue.find_by(id: params[:id])
-        veune.destroy
+        venue.destroy
         head :no_content
     end
 

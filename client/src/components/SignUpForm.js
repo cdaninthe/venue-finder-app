@@ -32,7 +32,7 @@ function SignUpForm({handleLoginClick, onLogin}) {
     return (
         <div>
             <form onSubmit={handleSignup}>
-                <h2>Create an Account (USER SIGN UP)</h2>
+                <h2>Create an Account</h2>
                 <br />
                 <label>Username: </label><br />
                 <input type="text" name="username"

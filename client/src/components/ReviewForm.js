@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 
 
-function ReviewForm({venueId, updateReviews, user}){
+function ReviewForm({venueId, onAddReview, user}){
     
     const [ userReviewRating, setUserReviewRating ] = useState("")
     const [ userReviewComment, setUserReviewComment ] = useState("")
@@ -29,7 +29,7 @@ function ReviewForm({venueId, updateReviews, user}){
                 setErrors(err.errors)})
             } else{
                 setShowForm(false)
-                res.json().then((data) => updateReviews(data))
+                res.json().then((newReview) => onAddReview(newReview))
             }
         })
     }
@@ -42,16 +42,16 @@ function ReviewForm({venueId, updateReviews, user}){
         <div>
             <div>
                 <form onSubmit={(e) => handleFormSubmit(e)}>
-                    <label>Rating: </label><br />
+                    <label>Rating: </label>
                     <input type="number" placeholder="1-5 rating" 
                         value={userReviewRating}
                         onChange={(e) => setUserReviewRating(e.target.value)}
-                    />
-                    <label>Comment: </label><br />
+                    /><br />
+                    <label>Comment: </label>
                     <input type="text" placeholder="Comment" 
                         value={userReviewComment}
                         onChange={(e) => setUserReviewComment(e.target.value)}
-                    />
+                    /><br />
                     <button type="submit">Submit</button>
 
                     <button onClick={() => setShowForm(false)}>Cancel</button>
@@ -59,7 +59,7 @@ function ReviewForm({venueId, updateReviews, user}){
             </div>
             { errors && 
                 <div id="errors-container">
-                    { errors.map(error => <span className="error-message" key={error}>{error}</span>)}
+                    { errors.map(error => <div className="error-message" key={error}>{error}. </div>)}
                 </div>
             }
         </div>

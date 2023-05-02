@@ -2,8 +2,9 @@ import React from "react";
 import { Card, Image, Icon } from "semantic-ui-react";
 import {useHistory} from 'react-router-dom';
 
-function Venue({venue}){
+function Venue({venue, user}){
     const history = useHistory()
+    console.log(user)
 
     return( 
         <Card fluid color='green' onClick={() => history.push(`/venues/${venue.id}`)}>

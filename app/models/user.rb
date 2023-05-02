@@ -5,7 +5,7 @@ class User < ApplicationRecord
     
     has_secure_password
 
-    has_many :venues, dependent: :destroy
     has_many :reviews, dependent: :destroy
     has_many :venues, through: :reviews
+    has_many :venues, dependent: :destroy
 end

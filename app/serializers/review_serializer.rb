@@ -1,6 +1,6 @@
 class ReviewSerializer < ActiveModel::Serializer
   attributes :id, :rating, :comment
 
-  has_one :user, serializer: ReviewUserSerializer
-  has_one :venue, serializer: ReviewVenueSerializer
+  belongs_to :user, serializer: ReviewUserSerializer
+  belongs_to :venue, serializer: ReviewVenueSerializer
 end

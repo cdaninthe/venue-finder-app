@@ -9,9 +9,9 @@
 puts "Seeding database..."
 
 #  CREATE USERS
-User.create(username: "John", password: "password")
-User.create(username: "Jane", password: "password")
-User.create(username: "Mary", password: "password")
+User.create(username: "John", password_digest: "password")
+User.create(username: "Jane", password_digest: "password")
+User.create(username: "Mary", password_digest: "password")
 
 
 # CREATE VENUES
@@ -35,13 +35,13 @@ Venue.create(
     user_id: User.first.id
 )
 
-# # CREATE REVIEWS
+# CREATE REVIEWS
 Venue.all.each do |venue|
     2.times do
         venue.reviews.create(
             rating: rand(1..5),
             comment: Faker::Lorem.paragraph(sentence_count: 3),
-            user_id: rand(1..3)
+            user_id: rand(2..3)
         )
     end
 end

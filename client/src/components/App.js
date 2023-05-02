@@ -11,16 +11,25 @@ import Account from './Account';
 function App() {
   const [user, setUser] = useState(null);
 
+  useEffect(() => {
+    // auto-login
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser({
+          id: user.id,
+          username: user.username
+        }));
+      }
+    });
+  }, []);
 
   return (
     <div className="App">
-      {/* <p>Hello: {user.username}</p> */}
       <Header/>
-
 
       { !user ? <Login onLogin={setUser} /> : 
         <div> 
-          <NavBar user={user}/>
+          <NavBar user={user} setUser={setUser}/>
           <br />
           <Switch>
             <Route exact path="/account">
