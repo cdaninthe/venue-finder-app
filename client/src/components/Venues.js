@@ -8,7 +8,7 @@ import Venue from "./Venue";
 
     // NC
 function Venues({venues}){
-    console.log(venues)
+    // debugger;    
 
    
 

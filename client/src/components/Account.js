@@ -3,9 +3,11 @@ import UserVenues from "./UserVenues";
 import VenueForm from "./VenueForm";
 import UserReviews from "./UserReviews";
 import UserContext from "./UserContext";
+import { useHistory } from "react-router-dom";
 
 function Account({venues, setVenues}){
     const { user } = useContext(UserContext)
+    const history = useHistory()
 
     const [userReviews, setUserReviews] = useState([]);
     const [userVenues, setUserVenues] = useState([]);
@@ -31,8 +33,8 @@ function Account({venues, setVenues}){
     function addNewVenue(newVenue){
         // setUserVenues((venues) => [formData, ...venues])
         // setUserVenues([...userVenues, formData])
-        setVenues(...venues, newVenue)
-        // history.push('/')
+        setVenues([...venues, newVenue])
+        history.push('/')
     }
 
     // function handleDeleteVenue(venueId){
