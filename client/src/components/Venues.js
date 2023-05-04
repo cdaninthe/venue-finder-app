@@ -8,6 +8,10 @@ import Venue from "./Venue";
 
     // NC
 function Venues({venues}){
+    console.log(venues)
+
+   
+
     // const { user } = useContext(UserContext)
     // NC end
 

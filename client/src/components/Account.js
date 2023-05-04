@@ -3,11 +3,9 @@ import UserVenues from "./UserVenues";
 import VenueForm from "./VenueForm";
 import UserReviews from "./UserReviews";
 import UserContext from "./UserContext";
-import { useHistory } from "react-router-dom";
 
 function Account({venues, setVenues}){
     const { user } = useContext(UserContext)
-    const history = useHistory()
 
     const [userReviews, setUserReviews] = useState([]);
     const [userVenues, setUserVenues] = useState([]);
@@ -15,8 +13,6 @@ function Account({venues, setVenues}){
 
     useEffect(() => {
         console.log(user.venues)
-        const uniqueVenues = [...new Set(user.venues)]
-        console.log(uniqueVenues)
         setUserVenues(user.venues)
         setUserReviews(user.reviews) 
     }, []);
