@@ -2,7 +2,8 @@ class VenuesController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
   
     def index
-        render json: Venue.all, status: :ok
+        venues = Venue.all
+        render json: venues, status: :ok
     end
 
     def show
@@ -16,7 +17,8 @@ class VenuesController < ApplicationController
     end
 
     def create
-        venue = @current_user.venues.create!(venue_params)
+        # venue = @current_user.venues.create!(venue_params)
+        venue = Venue.create!(venue_params)
         render json: venue, status: :created
     end
 

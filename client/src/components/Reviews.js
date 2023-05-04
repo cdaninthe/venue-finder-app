@@ -1,10 +1,18 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import { Card } from "semantic-ui-react";
 import Review from "./Review";
 import { useParams } from "react-router-dom";
 import ReviewForm from "./ReviewForm";
+import UserContext from "./UserContext";
 
-function Reviews({user}){
+
+// function Reviews({user}){
+
+    // NC
+function Reviews(){
+    const { user } = useContext(UserContext)
+    // NC end
+
     const params = useParams()
     const [reviews, setReviews] = useState([])    
 

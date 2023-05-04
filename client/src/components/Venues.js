@@ -1,24 +1,34 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext} from "react";
 import { Card } from "semantic-ui-react";
 import Venue from "./Venue";
+import UserContext from "./UserContext";
 
-function Venues({user}){
-    const [venues, setVenues] = useState([])
 
-    useEffect(()=>{
-        fetch(`/venues`)
-        .then((r)=> r.json())
-        .then((venues)=> {
-            setVenues(venues)
-        })
-    },[])
+// function Venues({user, venues}){
+
+    // NC
+function Venues({venues}){
+    const { user } = useContext(UserContext)
+    // NC end
+
+
+    // const [venues, setVenues] = useState([])
+
+    // useEffect(()=>{
+    //     fetch(`/venues`)
+    //     .then((r)=> r.json())
+    //     .then((venues)=> {
+    //         setVenues(venues)
+    //         console.log(venues)
+    //     })
+    // },[])
     
 
     return(
         <Card.Group itemsPerRow={4}>
             {venues.map((venue) => (
                 <Venue
-                    key={venue.id} venue={venue} user={user}
+                    key={venue.id} venue={venue}
                 />
             ))}
         </Card.Group>

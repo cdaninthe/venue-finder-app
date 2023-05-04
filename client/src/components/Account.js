@@ -1,44 +1,56 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import UserVenues from "./UserVenues";
 import VenueForm from "./VenueForm";
 import UserReviews from "./UserReviews";
+import UserContext from "./UserContext";
 
-function Account({}){
+function Account({venues, setVenues}){
+    const { user } = useContext(UserContext)
+
     const [userReviews, setUserReviews] = useState([]);
     const [userVenues, setUserVenues] = useState([]);
     const [venueFormHidden, setVenueFormHidden] = useState('hidden')
 
     useEffect(() => {
-    fetch("/me").then((r) => {
-        if (r.ok) {
-            r.json().then((user) => {
-                setUserVenues(user.venues)
-                setUserReviews(user.reviews)
-            });
-        }
-    });
+        console.log(user.venues)
+        const uniqueVenues = [...new Set(user.venues)]
+        console.log(uniqueVenues)
+        setUserVenues(user.venues)
+        setUserReviews(user.reviews) 
     }, []);
 
+    // useEffect(() => {
+    // fetch("/me").then((r) => {
+    //     if (r.ok) {
+    //         r.json().then((user) => {
+    //             setUserVenues(user.venues)
+    //             setUserReviews(user.reviews)
+    //         });
+    //     }
+    // });
+    // }, []);
+
     function addNewVenue(formData){
-        setUserVenues((venues) => [formData, ...venues])
+        // setUserVenues((venues) => [formData, ...venues])
+        // setUserVenues([...userVenues, formData])
+        setVenues(...venues, formData)
     }
 
-    function handleDeleteVenue(venueId){
-        fetch(`/venues/${venueId}`, {
-            method: "DELETE",
-        }).then(res => {
-            if(res.ok){
-                setUserVenues(
-                    userVenues.filter((venue) => {
-                        return venue.id !== venueId
-                    })
-                )
-            }
-        })
-    }
+    // function handleDeleteVenue(venueId){
+    //     fetch(`/venues/${venueId}`, {
+    //         method: "DELETE",
+    //     }).then(res => {
+    //         if(res.ok){
+    //             setUserVenues(
+    //                 userVenues.filter((venue) => {
+    //                     return venue.id !== venueId
+    //                 })
+    //             )
+    //         }
+    //     })
+    // }
     
     function handleAddClick(){
-        console.log('show form')
         setVenueFormHidden('')
     }
 
@@ -46,22 +58,23 @@ function Account({}){
         <div>
             <h2>ACCOUNT OVERVIEW</h2>
             <br />
+            <button onClick={handleAddClick}>+ Add New Venue</button>
             
             <div>
-                <h4>My Venues</h4>
-                <button onClick={handleAddClick}>+ Add New Venue</button>
+                <br />
+                <h4>My Reviews</h4>
+                <UserReviews userReviews={userReviews}/>
+            </div>
+
+            <div>
+                <h4>Reviewed Venues</h4>
                 <div hidden={venueFormHidden}>
                     <VenueForm addNewVenue={addNewVenue} setVenueFormHidden={setVenueFormHidden}/>
                 </div>
                 <UserVenues 
                     userVenues={userVenues}
-                    handleDeleteVenue={handleDeleteVenue}
+                    // handleDeleteVenue={handleDeleteVenue}
                 />
-            </div>
-            <div>
-                <br />
-                <h4>My Reviews</h4>
-                <UserReviews userReviews={userReviews}/>
             </div>
         </div>
     )

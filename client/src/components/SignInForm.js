@@ -14,7 +14,9 @@ function SignInForm({handleLoginClick, onLogin}) {
             body: JSON.stringify({ username, password })
         }).then(res => {
             if(res.ok){
-                res.json().then((user) => onLogin(user))
+                res.json().then((user) => {
+                    onLogin(user)
+                })
             } else{
                 res.json().then((err) => setError(`${Object.keys(err)}: ${Object.values(err)}`))
             }

@@ -1,7 +1,16 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import { Card, Icon } from "semantic-ui-react";
+import UserContext from "./UserContext";
 
-function Review({review, onDeleteReview, onUpdateReview, user}){
+
+// function Review({review, onDeleteReview, onUpdateReview, user}){
+
+    // NC
+function Review({review, onDeleteReview, onUpdateReview}){
+
+    const { user } = useContext(UserContext)
+    // NC end
+
     const [commentHidden, setCommentHidden] = useState('')
     const [formHidden, setFormHidden] = useState('hidden')
     const [reviewRating, setReviewRating] = useState('')

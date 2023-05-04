@@ -22,7 +22,7 @@ Venue.create(
     state: "New York",
     image_url: 'https://images.unsplash.com/photo-1550948390-6eb7fa773072?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1748&q=80',
     price: 50, 
-    user_id: User.first.id
+    # user_id: User.first.id
 )
 
 Venue.create(
@@ -32,7 +32,7 @@ Venue.create(
     state: "New York",
     image_url: 'https://images.unsplash.com/photo-1493246318656-5bfd4cfb29b8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80',
     price: 150, 
-    user_id: User.first.id
+    # user_id: User.first.id
 )
 
 # CREATE REVIEWS

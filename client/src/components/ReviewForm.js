@@ -1,7 +1,13 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
+import UserContext from "./UserContext";
 
 
-function ReviewForm({venueId, onAddReview, user}){
+// function ReviewForm({venueId, onAddReview, user}){
+
+    // NC
+function ReviewForm({venueId, onAddReview}){
+    const { user } = useContext(UserContext)
+    // NC end
     
     const [ userReviewRating, setUserReviewRating ] = useState("")
     const [ userReviewComment, setUserReviewComment ] = useState("")
@@ -30,6 +36,8 @@ function ReviewForm({venueId, onAddReview, user}){
             } else{
                 setShowForm(false)
                 res.json().then((newReview) => onAddReview(newReview))
+                setUserReviewRating('')
+                setUserReviewComment('')
             }
         })
     }

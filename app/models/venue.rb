@@ -8,5 +8,6 @@ class Venue < ApplicationRecord
     
     has_many :reviews, dependent: :destroy
     has_many :users, through: :reviews
-    belongs_to :user
+    # belongs_to :user
+    # belongs_to :owner, :class_name => "User"
 end
