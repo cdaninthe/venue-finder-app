@@ -1,14 +1,14 @@
-import React, {useContext} from "react";
+import React from "react";
 import { Card } from "semantic-ui-react";
 import Venue from "./Venue";
-import UserContext from "./UserContext";
+// import UserContext from "./UserContext";
 
 
 // function Venues({user, venues}){
 
     // NC
 function Venues({venues}){
-    const { user } = useContext(UserContext)
+    // const { user } = useContext(UserContext)
     // NC end
 
 
