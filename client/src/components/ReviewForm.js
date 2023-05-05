@@ -26,8 +26,7 @@ function ReviewForm({venueId, onAddReview}){
             body: JSON.stringify({
                 rating: userReviewRating,
                 comment: userReviewComment,
-                venue_id: parseInt(venueId),
-                user_id: user.id
+                venue_id: parseInt(venueId)
             })
         }).then(res => {
             if (!res.ok){
@@ -38,6 +37,7 @@ function ReviewForm({venueId, onAddReview}){
                 res.json().then((newReview) => onAddReview(newReview))
                 setUserReviewRating('')
                 setUserReviewComment('')
+                
             }
         })
     }

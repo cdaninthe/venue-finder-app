@@ -76,7 +76,7 @@ function VenueListing({venues}){
                         <Card.Content>
                             <br />
                             <h3>Reviews:</h3>
-                            <Reviews />
+                            <Reviews venueListing={venueListing} setVenueListing={setVenueListing}/>
                         </Card.Content>
                     : null}
                 </Card>

@@ -9,9 +9,17 @@ import UserContext from "./UserContext";
 // function Reviews({user}){
 
     // NC
-function Reviews(){
-    const { user } = useContext(UserContext)
+function Reviews({venueListing, setVenueListing}){
+    // const { user } = useContext(UserContext)
+    const { user, setUser } = useContext(UserContext)
     // NC end
+    console.log(venueListing)
+    console.log(venueListing.users)
+    console.log(user)
+    console.log([user.id, user.username])
+
+    
+    
 
     const params = useParams()
     const [reviews, setReviews] = useState([])    
@@ -24,6 +32,23 @@ function Reviews(){
 
     function handleAddReview(newReview){
         setReviews([newReview, ...reviews])
+        console.log(venueListing.users)
+        const listingUsers = [...venueListing.users, {id: user.id, username: user.username}]
+        console.log(listingUsers)
+        console.log({...venueListing, users: listingUsers})
+        setVenueListing({...venueListing, users: listingUsers})
+        
+        const venue = {city: venueListing.city, 
+            id: venueListing.id,
+            image_url: venueListing.image_url,
+            name: venueListing.name,
+            price: venueListing.price,
+            state: venueListing.state
+        }
+        const listingVenues = [...user.venues, venue]
+        const listingReviews = [...user.reviews, newReview]
+        setUser({...user, venues: listingVenues, reviews: listingReviews})
+        
     }
 
     function handleDeleteReview(reviewId){
