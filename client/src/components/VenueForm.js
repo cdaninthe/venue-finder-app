@@ -20,7 +20,7 @@ function VenueForm({addNewVenue, setVenueFormHidden}){
         body: JSON.stringify(formData)
       }).then((r) => {
         if(r.ok){
-            addNewVenue(formData)
+            r.json().then((newVenue) => addNewVenue(newVenue))
             setFormData({
                 name: "",
                 city: "", 
